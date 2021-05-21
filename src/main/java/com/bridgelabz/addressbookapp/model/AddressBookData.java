@@ -8,8 +8,8 @@ public class AddressBookData
 	private String name;
 	private String address;
 
-	public AddressBookData() {
-	}
+	public AddressBookData() 
+	{}
 	
 	public AddressBookData(int addressBookId, AddressBookDTO addressBookDTO) 
 	{
@@ -28,15 +28,14 @@ public class AddressBookData
 		this.addressBookId = addressBookId;
 	}
 
-	public String getName() 
+	public String getName()
 	{
 		return name;
 	}
-	
+
 	public void setName(String name) 
 	{
 		this.name = name;
-		
 	}
 
 	public String getAddress() 
