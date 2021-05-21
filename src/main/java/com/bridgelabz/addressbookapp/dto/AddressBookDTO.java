@@ -9,7 +9,7 @@ public class AddressBookDTO {
 	public AddressBookDTO(String name, String address) 
 	{
 		super();
-		this.setAddress(address);
+		this.setName(name);
 		this.setAddress(address);
 	}
 <<<<<<< HEAD
