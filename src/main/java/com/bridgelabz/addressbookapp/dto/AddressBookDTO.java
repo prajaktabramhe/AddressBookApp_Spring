@@ -4,39 +4,41 @@ public class AddressBookDTO {
 
 	private String name;
 	private String address;
+	
 
 	public AddressBookDTO(String name, String address) 
 	{
 		super();
-		this.name = name;
-		this.address = address;
+		this.setAddress(address);
+		this.setAddress(address);
 	}
 
-	public String getName() 
-	{
-		return name;
-	}
-
-	public void setName(String name) 
-	{
-		this.name = name;
-	}
-
-	public String getAddress() 
-	{
-		return address;
-	}
-
-	public void setAddress(String address) 
-	{
-		this.address = address;
-	}
 
 	@Override
 	public String toString() {
-		return "AddressBookDTO [name=" + name + ", address=" + address + "]";
+		return "AddressBookDTO [name=" + getName() + ", address=" + getAddress() + "]";
 	}
-  
-	
-	
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
 }
