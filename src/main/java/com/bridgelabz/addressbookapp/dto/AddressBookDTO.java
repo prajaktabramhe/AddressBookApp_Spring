@@ -14,12 +14,14 @@ public class AddressBookDTO {
 	}
 
 
-	public String getName() {
+	public String getName() 
+	{
 		return name;
 	}
 
 
-	public void setName(String name) {
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
 
@@ -29,7 +31,8 @@ public class AddressBookDTO {
 	}
 
 
-	public void setAddress(String address) {
+	public void setAddress(String address)
+	{
 		this.address = address;
 	}
 

@@ -11,7 +11,8 @@ public class AddressBookData
 	public AddressBookData() {
 	}
 	
-	public AddressBookData(int addressBookId, AddressBookDTO addressBookDTO) {
+	public AddressBookData(int addressBookId, AddressBookDTO addressBookDTO) 
+	{
 		this.addressBookId = addressBookId;
 		this.name = addressBookDTO.getName();
 		this.address = addressBookDTO.getAddress();
@@ -37,6 +38,7 @@ public class AddressBookData
 		this.name = name;
 		
 	}
+
 	public String getAddress() 
 	{
 		return address;
