@@ -12,22 +12,6 @@ public class AddressBookDTO {
 		this.setName(name);
 		this.setAddress(address);
 	}
-<<<<<<< HEAD
-		
-	@Override
-	public String toString() {
-		return "AddressBookDTO [name=" + name + ", address=" + address + "]";
-	}
-  
-	
-	
-=======
-
-
-	@Override
-	public String toString() {
-		return "AddressBookDTO [name=" + getName() + ", address=" + getAddress() + "]";
-	}
 
 
 	public String getName() {
@@ -50,6 +34,9 @@ public class AddressBookDTO {
 	}
 
 
+	@Override
+	public String toString() {
+		return "AddressBookDTO [name=" + getName() + ", address=" + getAddress() + "]";
+	}
 
->>>>>>> UC3_IntroduceDTO_Model_AddressBookApp
 }
