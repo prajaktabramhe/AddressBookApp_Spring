@@ -31,26 +31,36 @@ import com.bridgelabz.addressbookapp.model.AddressBookData;
 		}
 		
 	    @GetMapping("/get/{contId}")
-	    public ResponseEntity<String> getAddressBookById(@PathVariable("contId") int contId)
+	    public ResponseEntity<ResponseDTO> getAddressBookById(@PathVariable("contId") int contId)
 	    {
-	    	return new ResponseEntity<String>("Addressbook data by Id : "+contId,HttpStatus.OK);
+	    	AddressBookData contactData = null;
+			contactData = new AddressBookData(2, new AddressBookDTO("Prajakta", "Nagpur"));
+			ResponseDTO respDTO = new ResponseDTO("Get Call For ID Successful", contactData);
+			return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
 	    }
 		
 	     @PostMapping("/create")
-	     public ResponseEntity<String> createAddressBookData(@RequestBody AddressBookDTO addressBookDTO)
+	     public ResponseEntity<ResponseDTO> createAddressBookData(@RequestBody AddressBookDTO addressBookDTO)
 	     {
-	    	 return new ResponseEntity<String>("Address Book dto is " + addressBookDTO,HttpStatus.OK);
+	    	 AddressBookData contactData = null;
+	 		contactData = new AddressBookData(3, addressBookDTO);
+	 		ResponseDTO respDTO = new ResponseDTO("Created Address Book Contact Successfully", contactData);
+	 		return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
 	     } 
 	     
 	     @PutMapping("/update/{contId}")
-	     public ResponseEntity<String> updateAddrressBookData(@PathVariable("contId") int contId, @RequestBody AddressBookDTO addressBookDTO)
+	     public ResponseEntity<ResponseDTO> updateAddrressBookData(@RequestBody AddressBookDTO addressBookDTO)
          {
-	    	 return new ResponseEntity<String>("Updated address book of Id : "+contId+" "+addressBookDTO,HttpStatus.OK);
+	    	 AddressBookData contactData = null;
+	 		contactData = new AddressBookData(3, addressBookDTO);
+	 		ResponseDTO respDTO = new ResponseDTO("Updated Address Book Contact Successfully", contactData);
+	 		return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
 	     }
 	     
 	     @DeleteMapping("/delete/{contId}")
-	 	 public ResponseEntity<String> deleteAddressBookData(@PathVariable("contId") int contId)
+	 	 public ResponseEntity<ResponseDTO> deleteAddressBookData(@PathVariable("contId") int contId)
 	     {
-	 		return new ResponseEntity<String>("Deleted successfully the contact "+contId,HttpStatus.OK);
+	    	 ResponseDTO respDTO = new ResponseDTO("Deleted Address Book Contact Successfully", "Deleted Id: " + contId);
+	 		return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
 	   	 }
 	}
