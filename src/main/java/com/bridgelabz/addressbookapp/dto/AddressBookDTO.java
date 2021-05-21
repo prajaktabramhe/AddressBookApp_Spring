@@ -2,8 +2,8 @@ package com.bridgelabz.addressbookapp.dto;
 
 public class AddressBookDTO {
 
-	private String name;
-	private String address;
+	public String name;
+	public String address;
 	
 
 	public AddressBookDTO(String name, String address) 

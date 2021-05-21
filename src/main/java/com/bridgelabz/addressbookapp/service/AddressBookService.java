@@ -10,35 +10,43 @@ import com.bridgelabz.addressbookapp.model.AddressBookData;
 public class AddressBookService implements IAddressBookService 
 {
 
+	private List<AddressBookData> addressBookList = new ArrayList<AddressBookData>();
+	
 	@Override
 	public List<AddressBookData> getAddressBookData() 
 	{
-		List<AddressBookData> addressBookList = new ArrayList<AddressBookData>();
-		addressBookList.add(new AddressBookData(1, new AddressBookDTO("Prajakta", "Amravati")));
 		return addressBookList;
 	}
 
 	@Override
-	public AddressBookData getAddressBookById(int contId) {
-		AddressBookData addressBookData = new AddressBookData(2, new AddressBookDTO("Prajakta", "Pune"));
+	public AddressBookData getAddressBookById(int contId) 
+	{
+		return addressBookList.get(contId - 1);
+	}
+
+	@Override
+	public AddressBookData createAddressBookData(AddressBookDTO addressBookDTO) 
+	{
+		AddressBookData addressBookData = null;
+		addressBookData=new AddressBookData(addressBookList.size()+1,addressBookDTO);
+		addressBookList.add(addressBookData);
 		return addressBookData;
 	}
 
 	@Override
-	public AddressBookData createAddressBookData(AddressBookDTO addressBookDTO) {
-		AddressBookData addressBookData = new AddressBookData(2, addressBookDTO);
-		return addressBookData;
+	public AddressBookData updateAddressBookData(int contId, AddressBookDTO addressBookDTO)
+	{
+		AddressBookData addressBookData = this.getAddressBookById(contId);
+		addressBookData.setName(addressBookDTO.name);
+		addressBookData.setAddress(addressBookDTO.address);
+		addressBookList.set(contId - 1, addressBookData );
+		return addressBookData ;
 	}
 
 	@Override
-	public AddressBookData updateAddressBookData(int contId, AddressBookDTO addressBookDTO) {
-		AddressBookData addressBookData = new AddressBookData(2, addressBookDTO);
-		return addressBookData;
-	}
-
-	@Override
-	public void deleteAddressBookData(int contId) {
-		// TODO Auto-generated method stub
+	public void deleteAddressBookData(int contId) 
+	{
+		addressBookList.remove(contId - 1);
 		
 	}
 
