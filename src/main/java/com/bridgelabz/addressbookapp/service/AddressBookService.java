@@ -18,4 +18,28 @@ public class AddressBookService implements IAddressBookService
 		return addressBookList;
 	}
 
+	@Override
+	public AddressBookData getAddressBookById(int contId) {
+		AddressBookData addressBookData = new AddressBookData(2, new AddressBookDTO("Prajakta", "Pune"));
+		return addressBookData;
+	}
+
+	@Override
+	public AddressBookData createAddressBookData(AddressBookDTO addressBookDTO) {
+		AddressBookData addressBookData = new AddressBookData(2, addressBookDTO);
+		return addressBookData;
+	}
+
+	@Override
+	public AddressBookData updateAddressBookData(int contId, AddressBookDTO addressBookDTO) {
+		AddressBookData addressBookData = new AddressBookData(2, addressBookDTO);
+		return addressBookData;
+	}
+
+	@Override
+	public void deleteAddressBookData(int contId) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
