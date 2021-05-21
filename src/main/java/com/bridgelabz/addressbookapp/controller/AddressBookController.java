@@ -12,16 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.addressbookapp.dto.AddressBookDTO;
+import com.bridgelabz.addressbookapp.dto.ResponseDTO;
+import com.bridgelabz.addressbookapp.model.AddressBookData;
 
 @RestController
 @RequestMapping("/addressbookapp")
 
 	public class AddressBookController 
 	{
-	@RequestMapping(value = { "", "/", "/get" })
-		public ResponseEntity<String> getAddressBookData()
+
+	    @RequestMapping(value = { "", "/", "/get" })
+		public ResponseEntity<ResponseDTO> getAddressBookData()
 		{
-			return new ResponseEntity<String>("Successfull got the data", HttpStatus.OK);
+	    	AddressBookData contactData = null;
+	    	contactData = new AddressBookData(1, new AddressBookDTO("Prajakta", "Tirupati"));
+	    	ResponseDTO respDTO = new ResponseDTO("Get Call Successful", contactData);
+			return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
 		}
 		
 	    @GetMapping("/get/{contId}")
