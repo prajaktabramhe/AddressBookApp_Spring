@@ -1,45 +1,28 @@
 package com.bridgelabz.addressbookapp.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
 public class AddressBookDTO {
 
+	@Pattern(regexp = "^[A-Z][a-z]{2,}\\s[A-Z][a-z]{2,}$", message = "Invalid name")
 	public String name;
+	
+	@Pattern(regexp = "^[A-Za-z,.0-9]{3,}$", message = "Address is Invalid!!! ")
+	@NotEmpty(message = "Address cannot be null")
 	public String address;
 	
-
 	public AddressBookDTO(String name, String address) 
 	{
 		super();
-		this.setName(name);
-		this.setAddress(address);
-	}
-
-
-	public String getName() 
-	{
-		return name;
-	}
-
-
-	public void setName(String name) 
-	{
 		this.name = name;
-	}
-
-
-	public String getAddress() {
-		return address;
-	}
-
-
-	public void setAddress(String address)
-	{
 		this.address = address;
 	}
 
-
 	@Override
 	public String toString() {
-		return "AddressBookDTO [name=" + getName() + ", address=" + getAddress() + "]";
+		return "AddressBookDTO [name=" + name + ", address=" + address + "]";
 	}
+
 
 }
