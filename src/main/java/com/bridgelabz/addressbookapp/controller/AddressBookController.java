@@ -31,16 +31,18 @@ import com.bridgelabz.addressbookapp.service.IAddressBookService;
 	    @RequestMapping(value = { "", "/", "/get" })
 		public ResponseEntity<ResponseDTO> getAddressBookData()
 		{
-	    	List<AddressBookData> addressBookData = addressBookService.getAddressBookData();
-			ResponseDTO responseDTO = new ResponseDTO("Successfull got the data", addressBookData);
+	    	List<AddressBookData> addressBookList = null;
+	    	addressBookList = addressBookService.getAddressBookData();
+	    	ResponseDTO responseDTO = new ResponseDTO("Successfully got the data", addressBookList);
 			return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 		}
 		
 	    @GetMapping("/get/{contId}")
 	    public ResponseEntity<ResponseDTO> getAddressBookById(@PathVariable("contId") int contId)
 	    {
-	    	AddressBookData addressBookData = addressBookService.getAddressBookById(contId);
-			ResponseDTO responseDTO = new ResponseDTO("Successfully got the data ", addressBookData);
+	    	AddressBookData addressBookData = null;
+	    	addressBookData = addressBookService.getAddressBookById(contId);
+			ResponseDTO responseDTO = new ResponseDTO("Get Call Success for id: ", addressBookData);
 			return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 		
 	    }
@@ -48,7 +50,8 @@ import com.bridgelabz.addressbookapp.service.IAddressBookService;
 	     @PostMapping("/create")
 	     public ResponseEntity<ResponseDTO> createAddressBookData(@RequestBody AddressBookDTO addressBookDTO)
 	     {
-	    	AddressBookData addressBookData = addressBookService.createAddressBookData(addressBookDTO);
+	    	AddressBookData addressBookData = null;
+	    	addressBookData = addressBookService.createAddressBookData(addressBookDTO);
 	 		ResponseDTO responseDTO = new ResponseDTO("Successfully created the data ", addressBookData);
 	 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	 	}
@@ -56,7 +59,8 @@ import com.bridgelabz.addressbookapp.service.IAddressBookService;
 	     @PutMapping("/update/{contId}")
 	     public ResponseEntity<ResponseDTO> updateAddrressBookData(@PathVariable("contId") int contId, @RequestBody AddressBookDTO addressBookDTO)
          {
-	    	AddressBookData addressBookData = addressBookService.updateAddressBookData(contId, addressBookDTO);
+	    	AddressBookData addressBookData = null;
+	    	addressBookData = addressBookService.updateAddressBookData(contId, addressBookDTO);
 	 		ResponseDTO responseDTO = new ResponseDTO("Updated address book of Id : ", addressBookData);
 	 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
          }
