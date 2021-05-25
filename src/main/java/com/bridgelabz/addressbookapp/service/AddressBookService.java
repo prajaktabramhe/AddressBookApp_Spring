@@ -25,7 +25,7 @@ public class AddressBookService implements IAddressBookService
 	@Override
 	public List<AddressBookData> getAddressBookData() 
 	{
-		return addressBookList;
+		return addressBookRepository.findAll();
 	}
 
 	@Override
@@ -49,16 +49,15 @@ public class AddressBookService implements IAddressBookService
 	public AddressBookData updateAddressBookData(int contId, AddressBookDTO addressBookDTO)
 	{
 		AddressBookData addressBookData = this.getAddressBookById(contId);
-		addressBookData.setName(addressBookDTO.name);
-		addressBookData.setAddress(addressBookDTO.address);
-		addressBookList.set(contId - 1, addressBookData );
-		return addressBookData ;
+		addressBookData.updateAddressBookData(addressBookDTO);
+		return addressBookRepository.save(addressBookData);
 	}
 
 	@Override
 	public void deleteAddressBookData(int contId) 
 	{
-		addressBookList.remove(contId - 1);
+		AddressBookData addressBookData = this.getAddressBookById(contId);
+		addressBookRepository.delete(addressBookData);
 		
 	}
 
