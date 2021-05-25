@@ -1,11 +1,21 @@
 package com.bridgelabz.addressbookapp.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.bridgelabz.addressbookapp.dto.AddressBookDTO;
 
 import lombok.Data;
 
+@Entity
+@Table (name = "addressbook")
 public @Data class AddressBookData 
 {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int addressBookId;
 	private String name;
 	private String phoneNumber;
@@ -17,9 +27,8 @@ public @Data class AddressBookData
 	public AddressBookData() 
 	{}
 	
-	public AddressBookData(int addressBookId, AddressBookDTO addressBookDTO) 
+	public AddressBookData(AddressBookDTO addressBookDTO) 
 	{
-		this.addressBookId = addressBookId;
 		this.name = addressBookDTO.name;
 		this.phoneNumber = addressBookDTO.phoneNumber;
 		this.address = addressBookDTO.address;
