@@ -49,11 +49,10 @@ import lombok.extern.slf4j.Slf4j;
 			return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 		
 	    }
-		
+			   
 	     @PostMapping("/create")
 	     public ResponseEntity<ResponseDTO> createAddressBookData(@Valid @RequestBody AddressBookDTO addressBookDTO)
 	     {
-	    	log.debug("Addressbook DTO : " + addressBookDTO.toString());
 	    	AddressBookData addressBookData = addressBookService.createAddressBookData(addressBookDTO);
 	 		ResponseDTO responseDTO = new ResponseDTO("Successfully created the data ", addressBookData);
 	 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);

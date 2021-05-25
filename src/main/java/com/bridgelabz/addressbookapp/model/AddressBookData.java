@@ -27,8 +27,9 @@ public @Data class AddressBookData
 	public AddressBookData() 
 	{}
 	
-	public void updateAddressBookData(AddressBookDTO addressBookDTO) {
-		// TODO Auto-generated method stub
+	public void updateAddressBookData(AddressBookDTO addressBookDTO) 
+	{
+		this.updateAddressBookData(addressBookDTO);
 		
 	}
 	public AddressBookData(AddressBookDTO addressBookDTO) 

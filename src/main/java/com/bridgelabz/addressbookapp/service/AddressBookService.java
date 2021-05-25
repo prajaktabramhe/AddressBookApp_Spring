@@ -1,6 +1,5 @@
 package com.bridgelabz.addressbookapp.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ public class AddressBookService implements IAddressBookService
 	@Autowired
 	private AddressBookRepository addressBookRepository;
 
-	private List<AddressBookData> addressBookList = new ArrayList<AddressBookData>();
 	
 	@Override
 	public List<AddressBookData> getAddressBookData() 
@@ -29,18 +27,17 @@ public class AddressBookService implements IAddressBookService
 	}
 
 	@Override
-	public AddressBookData getAddressBookById(int contId) 
-	{
-		return addressBookList.stream().filter(bookData -> bookData.getAddressBookId() == contId).findFirst()
+	public AddressBookData getAddressBookById(int contId) {
+		return addressBookRepository.findById(contId)
 				.orElseThrow(() -> new AddressBookException("Addressbook entry Not found"));
 	}
 
+		
 	@Override
 	public AddressBookData createAddressBookData(AddressBookDTO addressBookDTO) 
 	{
 		AddressBookData addressBookData = null;
 		addressBookData=new AddressBookData(addressBookDTO);
-		addressBookList.add(addressBookData);
 		log.debug("Addressbook Data :" + addressBookData.toString());
 		return addressBookRepository.save(addressBookData);
 	}
