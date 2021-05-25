@@ -2,6 +2,8 @@ package com.bridgelabz.addressbookapp.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +21,11 @@ import com.bridgelabz.addressbookapp.dto.ResponseDTO;
 import com.bridgelabz.addressbookapp.model.AddressBookData;
 import com.bridgelabz.addressbookapp.service.IAddressBookService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/addressbookapp")
+@Slf4j
 
 	public class AddressBookController 
 	{
@@ -46,15 +51,16 @@ import com.bridgelabz.addressbookapp.service.IAddressBookService;
 	    }
 		
 	     @PostMapping("/create")
-	     public ResponseEntity<ResponseDTO> createAddressBookData(@RequestBody AddressBookDTO addressBookDTO)
+	     public ResponseEntity<ResponseDTO> createAddressBookData(@Valid @RequestBody AddressBookDTO addressBookDTO)
 	     {
+	    	log.debug("Addressbook DTO : " + addressBookDTO.toString());
 	    	AddressBookData addressBookData = addressBookService.createAddressBookData(addressBookDTO);
 	 		ResponseDTO responseDTO = new ResponseDTO("Successfully created the data ", addressBookData);
 	 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	 	}
 	     	 	     
 	     @PutMapping("/update/{contId}")
-	     public ResponseEntity<ResponseDTO> updateAddrressBookData(@PathVariable("contId") int contId, @RequestBody AddressBookDTO addressBookDTO)
+	     public ResponseEntity<ResponseDTO> updateAddrressBookData(@Valid @PathVariable("contId") int contId, @RequestBody AddressBookDTO addressBookDTO)
          {
 	    	AddressBookData addressBookData = addressBookService.updateAddressBookData(contId, addressBookDTO);
 	 		ResponseDTO responseDTO = new ResponseDTO("Updated address book of Id : ", addressBookData);
