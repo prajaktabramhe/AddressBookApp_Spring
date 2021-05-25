@@ -7,7 +7,10 @@ import com.bridgelabz.addressbookapp.dto.AddressBookDTO;
 import com.bridgelabz.addressbookapp.exceptions.AddressBookException;
 import com.bridgelabz.addressbookapp.model.AddressBookData;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class AddressBookService implements IAddressBookService 
 {
 
@@ -32,6 +35,7 @@ public class AddressBookService implements IAddressBookService
 		AddressBookData addressBookData = null;
 		addressBookData=new AddressBookData(addressBookList.size()+1,addressBookDTO);
 		addressBookList.add(addressBookData);
+		log.debug("Addressbook Data :" + addressBookData.toString());
 		return addressBookData;
 	}
 
