@@ -61,8 +61,9 @@ import lombok.extern.slf4j.Slf4j;
 	     @PutMapping("/update/{contId}")
 	     public ResponseEntity<ResponseDTO> updateAddrressBookData(@Valid @PathVariable("contId") int contId, @RequestBody AddressBookDTO addressBookDTO)
          {
-	    	AddressBookData addressBookData = addressBookService.updateAddressBookData(contId, addressBookDTO);
-	 		ResponseDTO responseDTO = new ResponseDTO("Updated address book of Id : ", addressBookData);
+	    	 AddressBookData updateAddrressBookData =null;
+	    	 updateAddrressBookData  = addressBookService.updateAddressBookData(contId, addressBookDTO);
+	 		ResponseDTO responseDTO = new ResponseDTO("Updated address book of Id : ", updateAddrressBookData);
 	 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
          }
 	     
