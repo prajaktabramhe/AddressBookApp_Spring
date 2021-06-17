@@ -19,7 +19,7 @@ public class AddressBookService implements IAddressBookService
 	@Autowired
 	private AddressBookRepository addressBookRepository;
 
-	
+
 	@Override
 	public List<AddressBookData> getAddressBookData() 
 	{
@@ -32,12 +32,12 @@ public class AddressBookService implements IAddressBookService
 				.orElseThrow(() -> new AddressBookException("Addressbook entry Not found"));
 	}
 
-		
+
 	@Override
 	public AddressBookData createAddressBookData(AddressBookDTO addressBookDTO) 
 	{
 		AddressBookData addressBookData = null;
-		addressBookData=new AddressBookData(addressBookDTO);
+		addressBookData = new AddressBookData(addressBookDTO);
 		log.debug("Addressbook Data :" + addressBookData.toString());
 		return addressBookRepository.save(addressBookData);
 	}
@@ -55,7 +55,7 @@ public class AddressBookService implements IAddressBookService
 	{
 		AddressBookData addressBookData = this.getAddressBookById(contId);
 		addressBookRepository.delete(addressBookData);
-		
+
 	}
 
 }
